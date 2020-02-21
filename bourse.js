@@ -49,6 +49,9 @@ return V30D;
 };
 NesbatVolume30=Math.round((tvol)/(VolumeOf30Days)*100)/100
 
+//TODO بازنویسی شود
+//قیمت امروز به موزون 10 روزه
+GheymatbeMozon10=Math.round(((pc)/(([ih][0].PClosing*[ih][0].QTotTran5J+[ih][1].PClosing*[ih][1].QTotTran5J+[ih][2].PClosing*[ih][2].QTotTran5J+[ih][3].PClosing*[ih][3].QTotTran5J+[ih][4].PClosing*[ih][4].QTotTran5J+[ih][5].PClosing*[ih][5].QTotTran5J+[ih][6].PClosing*[ih][6].QTotTran5J+[ih][7].PClosing*[ih][7].QTotTran5J+[ih][8].PClosing*[ih][8].QTotTran5J+[ih][9].PClosing*[ih][9].QTotTran5J)/([ih][0].QTotTran5J+[ih][1].QTotTran5J+[ih][2].QTotTran5J+[ih][3].QTotTran5J+[ih][4].QTotTran5J+[ih][5].QTotTran5J+[ih][6].QTotTran5J+[ih][7].QTotTran5J+[ih][8].QTotTran5J+[ih][9].QTotTran5J)))*100)/100
 
 //RSI
 true==function()
@@ -142,4 +145,4 @@ true==function()
 
 }()
 
-//نسبت حجم به
+
