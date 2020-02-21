@@ -13,8 +13,42 @@ TedadKharidar=(ct).Buy_CountI
 //تعداد فروشنده حقیقی
 TedadForoushandeh=(ct).Sell_CountI
 
-//نسبت حجم به حجم ده روز
-NesbatVolume10=Math.round((tvol)/(([ih][0].QTotTran5J+[ih][1].QTotTran5J+[ih][2].QTotTran5J+[ih][3].QTotTran5J+[ih][4].QTotTran5J+[ih][5].QTotTran5J+[ih][6].QTotTran5J+[ih][7].QTotTran5J+[ih][8].QTotTran5J+[ih][9].QTotTran5J)/10)*100)/100
+//نسبت حجم به حجم 10 روز
+var VolumeOf10Days=function()
+
+{
+
+var V10D=[ih][0].QTotTran5J;
+
+var n;
+
+for(n=1; n<9; n++)
+
+   V10D=(V10D+[ih][n].QTotTran5J)/2;
+
+return V10D;
+
+};
+NesbatVolume10=Math.round((tvol)/(VolumeOf10Days)*100)/100
+
+//نسبت حجم به حجم 30 روز
+var VolumeOf30Days=function()
+
+{
+
+var V30D=[ih][0].QTotTran5J;
+
+var n;
+
+for(n=1; n<29; n++)
+
+   V30D=(V30D+[ih][n].QTotTran5J)/2;
+
+return V30D;
+
+};
+NesbatVolume30=Math.round((tvol)/(VolumeOf30Days)*100)/100
+
 
 //RSI
 true==function()
@@ -83,4 +117,29 @@ true==function()
 
 }()
 
+//Stochastic
+true==function()
+{
+	function Stochastic(start,day){
+		var min_min=10000000;
+		var max_max=0;
+		for(var i=start;i<day;i++){
+			var namad=[ih][i];
+			if(namad.PriceMin<min_min){
+				min_min=namad.PriceMin;
+			}
+			if(namad.PriceMax>max_max){
+				max_max=namad.PriceMax;
+			}
+		}
+		var result=([ih][start].PClosing-min_min)*100/(max_max-min_min);
+		return result.toFixed(2);
+	}
+	
+	//(cfield0)=Stochastic(0,14);
+	
+	return true;
 
+}()
+
+//نسبت حجم به
